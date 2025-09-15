@@ -1,0 +1,396 @@
+
+
+:root {
+  --white: #FFFFFF;
+  --primary: #9760fe;
+  --sidebar-primary-hover: 
+    #EBEFFD;
+  --sidebar-bg: #ffffff;
+  --bg: #dfe0e2;
+  --text-gray: #898f96;
+  --text: #000000;
+  --text-headline: #111111;
+  --text-link: #f9fafc;
+  --text-dark: #8b8f96;
+  --logout: #FA7575;
+  --tooltip-bg: var(--primary);
+  --search-bg: #fff;
+  --search-border: #f0f0f0;
+  --search-text:#8d9195;
+  --search-icon: #a4a6ab;
+  --separator: #f1f1f1;
+  --link-hover: #f4f5f7;
+}
+
+body {
+  font-family: 'Work Sans', 
+    sans-serif;
+  font-size: 16px;
+  padding: 1rem;
+  height: 100%;
+  background: var(--bg);
+}
+
+html {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  min-height: 50rem;
+  height: 100%;
+  padding: 1.5rem 1rem;
+  border-radius: 0.5rem;
+  max-width: 18rem;
+  min-width: 4rem;
+  display: flex;
+  color: var(--white);
+  flex-direction: column;
+  background: 
+    var(--sidebar-bg);
+  transition: 
+    max-width 0.2s 
+    ease-in-out;
+}
+
+body.collapsed .sidebar {
+  max-width: 5rem;
+  display: flex;
+}
+
+body.collapsed .hide {
+  position: absolute;
+  visibility: hidden;
+}
+
+/*? separator */
+.separator {
+  width: 100%;
+  height: 1px;
+  background: var(
+    --separator
+  );
+  margin: 1rem 0;
+}
+
+.separator--top {
+  margin-top: auto;
+}
+
+/*? search wrapper */
+.search__wrapper {
+  position: relative;
+}
+
+.search__wrapper input {
+  background: var(--search-bg);
+  min-height: 3rem;
+  width: 100%;
+  color: var(--search-text);
+  border-radius: 0.75rem;
+  padding-left: 2.75rem;
+  font-size: 1.4rem;
+  border: 2px solid 
+    var(--search-border);
+}
+
+.search__wrapper 
+input::placeholder {
+  color: var(--search-text);
+  font-size: 1.2rem;
+}
+
+body.collapsed .search__wrapper 
+input::placeholder {
+  color: transparent;
+}
+
+.search__wrapper input:focus {
+  border: 2px solid var(--text);
+  outline: 2px solid var(--white);
+}
+
+.search__wrapper svg {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke: var(--search-text);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/*? sidebar top */
+.sidebar-top-wrapper {
+  display: flex;
+}
+
+.sidebar-top {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 4rem;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.logo__wrapper {
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.35rem;
+  gap: 0.75rem;
+}
+
+.logo-small {
+  height: 2rem;
+  width: 2rem;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.company-name {
+  white-space: nowrap;
+  color: var(--text-headline);
+}
+
+/*? menu links */
+.menu-links {
+  margin-top: 1rem;
+}
+
+.sidebar-links ul {
+  list-style-type: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar-links li {
+  min-width: 3rem;
+}
+
+.sidebar-links li svg {
+  stroke: var(--text-gray);
+  width: 1.75rem;
+  height: 1.75rem;
+  min-width: 1.75rem;
+}
+
+.sidebar-links li a:hover {
+  background: 
+    var(--link-hover);
+  color: var(--text);
+}
+
+.sidebar-links li a:hover svg {
+  stroke: var(--text);
+}
+
+.sidebar-links li a {
+  color: var(--text-gray);
+  width: 100%;
+  padding-left: 0.6rem;
+  font-size: 1.25rem;
+  display: flex;
+  gap: 0.75rem;
+  border-radius: 0.75rem;
+  justify-content: start;
+  align-items: center;
+  min-height: 3.25rem;
+  text-decoration: none;
+  transition: background 0.2s 
+    ease-in-out;
+}
+
+.sidebar-links li a .link {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: fadeIn 0.2s 
+    ease-in-out;
+}
+
+.sidebar-links .active:hover {
+  background: var(--link-hover);
+}
+
+.sidebar-links .active {
+  text-decoration: none;
+  background: var(--link-hover);
+  color: var(--text);
+}
+
+.sidebar-links .active svg {
+  stroke: var(--text);
+}
+
+.integrations {
+  margin-top: 1.5rem;
+}
+
+.integrations h2 {
+  font-size: 1rem;
+  margin-left: 0.6rem;
+  color: var(--text-gray);
+  margin-bottom: 0.5rem;
+}
+
+.integrations img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--text-gray);
+}
+
+/* ?tooltip */
+.tooltip {
+  position: relative;
+}
+
+.tooltip 
+.tooltip__content::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  margin-left: -9px;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: 
+    transparent var(--tooltip-bg) 
+    transparent transparent;
+}
+
+.tooltip .tooltip__content {
+  visibility: hidden;
+  background: var(--tooltip-bg);
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  position: absolute;
+  z-index: 1;
+  left: 4.5rem;
+}
+
+.collapsed .tooltip:hover 
+.tooltip__content {
+  visibility: visible;
+}
+
+.collapsed .tooltip:focus 
+.tooltip__content {
+  visibility: visible;
+}
+
+/*? profile part */
+.sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-direction: row;
+  color: var(--text-link);
+  overflow-x: hidden;
+  margin-top: auto;
+  height: fit-content;
+}
+
+.avatar__wrapper {
+  position: relative;
+  display: flex;
+}
+
+.avatar {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px 
+    solid transparent;
+  transition: all 
+    0.2s ease-in-out;
+}
+
+.avatar:hover {
+  border: 2px solid
+     var(--tooltip-bg);
+}
+
+.avatar__name {
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.user-name {
+  font-weight: 600;
+  text-align: left;
+  color: 
+    var(--text-white);
+}
+
+.email {
+  color: 
+    var(--text-white);
+  font-size: 0.8rem;
+}
+
+.logout {
+  margin-left: auto;
+}
+
+.logout svg {
+  color: var(--logout);
+}
+
+/*? Expand button */
+.expand-btn {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 2;
+  width: 2.95rem;
+  height: 2.95rem;
+  
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.expand-btn svg {
+  stroke: var(--text-gray);
+}
+
+.expand-btn:hover {
+  border: 1px solid 
+    var(--primary);
+}
+
+@keyframes fadeIn {
+  from {
+    width: 4rem;
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    width: 100%;
+  }
+}
